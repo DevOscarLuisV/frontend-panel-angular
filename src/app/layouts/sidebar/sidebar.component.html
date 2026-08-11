@@ -1,0 +1,54 @@
+@if (sidebarService.isOpen()) {
+<aside class="w-64 h-full bg-[#1e293b] border-r border-gray-700 flex flex-col transition-all duration-300 shadow-xl">
+
+  <div class="p-4 border-b border-gray-700 flex justify-between items-center">
+    <h2 class="text-white font-bold text-lg">Panel Control</h2>
+
+    <p-button icon="pi pi-times" class="text-white" (onClick)="sidebarService.isOpen.set(false)" [rounded]="true"
+      [text]="true" severity="secondary">
+    </p-button>
+  </div>
+
+  <nav class="flex flex-col gap-2 p-4 mt-2">
+    @if (estadoUsuario) {
+
+    <a routerLink="/" routerLinkActive="text-[#4070f4] bg-blue-900" [routerLinkActiveOptions]="{exact: true}"
+      (click)="sidebarService.isOpen.set(false)"
+      class="px-4 py-3 rounded-lg text-gray-300 font-medium cursor-pointer transition-colors hover:bg-gray-700 hover:text-white">
+      <i class="pi pi-home mr-2"></i> Inicio
+    </a>
+
+    <a routerLink="/books" routerLinkActive="text-[#4070f4] bg-blue-900" (click)="sidebarService.isOpen.set(false)"
+      class="px-4 py-3 rounded-lg text-gray-300 font-medium cursor-pointer transition-colors hover:bg-gray-700 hover:text-white">
+      <i class="pi pi-book mr-2"></i> Libros
+    </a>
+
+    <a routerLink="/autores" routerLinkActive="text-[#4070f4] bg-blue-900" (click)="sidebarService.isOpen.set(false)"
+      class="px-4 py-3 rounded-lg text-gray-300 font-medium cursor-pointer transition-colors hover:bg-gray-700 hover:text-white">
+      <i class="pi pi-users mr-2"></i> Autores
+    </a>
+
+    <a routerLink="/login" (click)="cerrarSesion()" routerLinkActive="text-[#4070f4] bg-blue-900"
+      (click)="sidebarService.isOpen.set(false)"
+      class="px-4 py-3 rounded-lg text-gray-300 font-medium cursor-pointer transition-colors hover:bg-gray-700 hover:text-white">
+      <i class="pi pi-sign-out mr-2"></i> Salir
+    </a>
+
+    }
+
+    @if (!estadoUsuario) {
+    <a routerLink="/registrar" routerLinkActive="text-[#4070f4] bg-blue-900" (click)="sidebarService.isOpen.set(false)"
+      class="px-4 py-3 rounded-lg text-gray-300 font-medium cursor-pointer transition-colors hover:bg-gray-700 hover:text-white">
+      <i class="pi pi-user-plus mr-2"></i> registrar
+    </a>
+    <a routerLink="/login" routerLinkActive="text-[#4070f4] bg-blue-900" (click)="sidebarService.isOpen.set(false)"
+      class="px-4 py-3 rounded-lg text-gray-300 font-medium cursor-pointer transition-colors hover:bg-gray-700 hover:text-white">
+      <i class="pi pi-sign-in mr-2"></i> login
+    </a>
+
+
+    }
+  </nav>
+
+</aside>
+}
